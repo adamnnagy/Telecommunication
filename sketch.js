@@ -6,12 +6,15 @@ var myAnimation;
 var someText = ". Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you";
 var buttonPressed = false;
 var button;
-
-var never = loadSound('never.mp3');
+var never;
 
 var someLyrics = someText.split(" ");
 
 var myAnimation = new Animation(defaultDiameter);
+
+function preload() {
+  never = loadSound('never.mp3');
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -23,6 +26,7 @@ function setup() {
   console.log(sqrt(sq(height)+sq(width)));
 
   text('HOLD "A"! ;)', windowWidth/2, windowHeight/2);
+  text('(or push the button)', windowWidth/2, windowHeight/2 + 100);
 }
 
 function draw() {
@@ -42,8 +46,9 @@ function draw() {
 
     if (buttonPressed) {
       myAnimation.grow();
+      // never.play();
     } else {
-      never.stop();
+      // never.stop();
     }
 
 
@@ -53,12 +58,24 @@ function draw() {
 
   if (keyIsDown(65)) {
     myAnimation.grow();
-    never.play();
+    // never.loop();
   } else {
-    never.stop();
+    // never.stop();
   }
 }
 
+
+function keyPressed() {
+  if (keyCode === 65) {
+    never.play();
+  }
+
+
+}
+
+function keyReleased() {
+  never.stop();
+}
 //CLASS ASSIGNMENT
 
 
