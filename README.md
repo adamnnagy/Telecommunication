@@ -1,2 +1,5 @@
-# Telecommunication
-Added physical controls (Arduino) to Many things
+# Many-things
+p5 project -- animation and visualisation
+
+
+exactly
